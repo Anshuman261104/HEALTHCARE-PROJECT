@@ -12,7 +12,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-//hello
+
 app.use(errorHandler);
 
 app.get('/', (req, res) => {
