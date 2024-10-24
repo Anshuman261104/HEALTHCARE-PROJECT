@@ -6,6 +6,9 @@ const cors = require("cors");
 const hbs = require("hbs");
 const path = require("path");
 
+// Route for User Registration and Authentication
+app.use("/api/user",require("./routes/userRoutes"));
+
 const dotenv = require("dotenv");
 dotenv.config();
 
