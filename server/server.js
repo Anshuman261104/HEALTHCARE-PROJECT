@@ -5,9 +5,9 @@ const errorHandler = require("./middlewares/errorHandler");
 const cors = require("cors");
 const hbs = require("hbs");
 const path = require("path");
+const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcrypt');
 
-// Route for User Registration and Authentication
-app.use("/api/user",require("./routes/userRoutes"));
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -20,6 +20,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use(errorHandler);
+
+app.use('/api/register', require("./routes/userRoutes"));
+
 
 // ERROR handling middleware
 app.use(errorHandler);
@@ -57,5 +60,5 @@ hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
 // APP CONFIG START
 app.listen(port, () =>{
-    console.log('Server running in port http://localhost:${port}');
+    console.log(Server running in port http://localhost:${port});
 });
