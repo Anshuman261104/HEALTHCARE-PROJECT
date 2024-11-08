@@ -1,17 +1,13 @@
-const express = require("express");
-const router = express.Router();
+const { validateJwtToken } = require("../middleware/jwtMiddleware"); 
+const express=require("express");
+const router=express.Router();
 
 const{
     registerUser,
-    // loginuser
-} = require("../controller/usercontroller");
+    loginUser
+}=require("../controllers/userController");
 
 
-// Route for user registration
-router.post("/", registerUser);
-
-// Route for user login
-// router.post("/login", loginUser);
-
-
-module.exports = router;
+router.post("/register", validateJwtToken, registerUser);
+router.post("/login", validateJwtToken,loginUser);
+module.exports=router;
